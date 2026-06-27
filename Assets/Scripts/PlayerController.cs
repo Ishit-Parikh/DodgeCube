@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BoppyMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     void Start()
     {

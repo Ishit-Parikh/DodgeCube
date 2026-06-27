@@ -4,7 +4,7 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameControll : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject droppyPrefab;
     private float xPosition = 0f;

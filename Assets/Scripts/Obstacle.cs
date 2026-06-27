@@ -4,13 +4,13 @@ using Object = UnityEngine.Object;
 
 public class Obstacle : MonoBehaviour
 {
-    private GameControll gameControll;
+    private GameManager _gameManager;
     private float yPosition = 0f;
     private float dropSpeed = 0.25f;
 
     private void Start()
     {
-        gameControll = Object.FindAnyObjectByType<GameControll>();
+        _gameManager = Object.FindAnyObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,15 +24,15 @@ public class Obstacle : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
         {
-            gameControll.isSpawned = false;
-            gameControll.score += 1;
-            gameControll.updateScore();
+            _gameManager.isSpawned = false;
+            _gameManager.score += 1;
+            _gameManager.updateScore();
             Destroy(gameObject);
         }
 
         if (other.CompareTag("Player"))
         {
-            gameControll.isSpawned = false;
+            _gameManager.isSpawned = false;
             Destroy(gameObject);
         }
     }
