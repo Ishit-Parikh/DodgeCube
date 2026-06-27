@@ -22,9 +22,8 @@ public class GameControll : MonoBehaviour
     {
         if (!isSpawned)
         {
-            xPosition = UnityEngine.Random.Range(-8.5f, 8.5f);
+            xPosition = UnityEngine.Random.Range(-4f, 4f);
             Instantiate(droppyPrefab, new Vector3(xPosition, 0f, 0f), Quaternion.identity);
-            Debug.Log("Is Created");
             isSpawned = true;
         }
     }
