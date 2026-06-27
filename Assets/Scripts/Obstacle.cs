@@ -29,5 +29,11 @@ public class Obstacle : MonoBehaviour
             gameControll.updateScore();
             Destroy(gameObject);
         }
+
+        if (other.CompareTag("Player"))
+        {
+            gameControll.isSpawned = false;
+            Destroy(gameObject);
+        }
     }
 }
