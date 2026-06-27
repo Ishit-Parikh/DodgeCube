@@ -6,15 +6,16 @@ A 2D Unity dodge-game built with Unity 6000.3.18f1. Control a cube and dodge fal
 
 - Press **A** to move left
 - Press **D** to move right
-- Dodge the falling cubes! Each successful dodge increments your score.
+- Dodge the falling cubes! Each successful dodge (obstacle hits the ground) increments your score.
+- If an obstacle hits you, it's destroyed and a new one spawns — no score, no mercy.
 
 ## Project Structure
 
 | File | Purpose |
 |---|---|
-| `Assets/Scripts/BoppyMovement.cs` | Player movement (A/D input, horizontal translation with clamping) + collision detection — logs "GAME-OVER!" on obstacle hit |
-| `Assets/Scripts/GameControll.cs` | Spawns obstacles at random X positions, tracks score, updates UI TextMeshPro score display |
-| `Assets/Scripts/Obstacle.cs` | Falling obstacle behaviour — falls downward at constant speed, resets spawn flag and increments score on ground collision |
+| `Assets/Scripts/BoppyMovement.cs` | Player movement (A/D input, horizontal translation clamped to ±4) + collision detection — logs "GAME-OVER!" on obstacle hit |
+| `Assets/Scripts/GameControll.cs` | Spawns obstacles at random X positions within ±4, tracks score, updates UI TextMeshPro score display |
+| `Assets/Scripts/Obstacle.cs` | Falling obstacle behaviour — falls downward at constant speed, increments score and respawns on ground collision; destroyed without scoring on player collision |
 | `Assets/Prefab/Droppy.prefab` | The falling obstacle prefab |
 | `Assets/Scenes/SampleScene.unity` | The main game scene |
 | `ProjectSettings/` | Unity project configuration (URP, physics, quality, etc.) |
