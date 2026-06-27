@@ -9,8 +9,8 @@ public class BoppyMovement : MonoBehaviour
         
     }
 
-    [SerializeField] float moveLimitLeft = -8.5f; 
-    [SerializeField] float moveLimitRight = 8.5f;
+    [SerializeField] float moveLimitLeft = -4f; 
+    [SerializeField] float moveLimitRight = 4f;
     
     void Update()
     {
