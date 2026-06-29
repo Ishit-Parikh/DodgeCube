@@ -8,7 +8,7 @@ public class Obstacle : MonoBehaviour
     private float yPosition = 0f;
     private float dropSpeed = 0.25f;
 
-    private void Start()
+    void Start()
     {
         _gameManager = Object.FindAnyObjectByType<GameManager>();
     }
@@ -24,15 +24,15 @@ public class Obstacle : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
         {
-            _gameManager.isSpawned = false;
-            _gameManager.score += 1;
-            _gameManager.updateScore();
+            _gameManager.isObstacleSpawned = false;
+            //_gameManager.score += 1;
+            //_gameManager.updateScore();
             Destroy(gameObject);
         }
 
         if (other.CompareTag("Player"))
         {
-            _gameManager.isSpawned = false;
+            _gameManager.isObstacleSpawned = false;
             Destroy(gameObject);
         }
     }
