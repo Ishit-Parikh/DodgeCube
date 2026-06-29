@@ -1,30 +1,57 @@
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject droppyPrefab;
-    private float xPosition = 0f;
-    public bool isSpawned = false;
-    public int score = 0;
-    public TextMeshProUGUI ScoreText;
+    public bool isGameActive = false;
+    public GameObject _mainMenuPanel;
+    
+    public GameObject droppyPrefab;
+    private bool isObstacleSpawned = false;
+    
+    public GameObject boppyPrefab;
+    public bool isPlayerSpawned = false;
 
-    public void updateScore()
+    //public int score = 0;
+    //public TextMeshProUGUI ScoreText;
+    //public TextMeshProUGUI FinalSocreText;
+
+    /*public void updateScore()
     {
         ScoreText.text = "Score: " + score.ToString();
+    }*/
+
+    void Start()
+    {
+        
+    }
+
+    public void GameStart()
+    {
+        isGameActive = true;
+    }
+
+    private void SpawnPlayer()
+    {
+        isPlayerSpawned = true;
+        Instantiate(boppyPrefab, new Vector3(0, -2.295f, 0), Quaternion.identity);
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (!isSpawned)
+        if(isGameActive)
         {
-            xPosition = UnityEngine.Random.Range(-4f, 4f);
-            Instantiate(droppyPrefab, new Vector3(xPosition, 0f, 0f), Quaternion.identity);
-            isSpawned = true;
+            if (!isPlayerSpawned)
+            {
+                SpawnPlayer();
+            }
+            
+            if (!isObstacleSpawned)
+            {
+                Instantiate(droppyPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                isObstacleSpawned = true;
+            }
         }
     }
 }
