@@ -1,6 +1,6 @@
-# DodgeCube
+# Boppy Dodge
 
-A 2D Unity dodge-game built with Unity 6000.3.18f1. Control a cube and dodge falling obstacles for as long as you can.
+A 2D Unity dodge-game built with Unity 6000.3.18f1. Control a cube and dodge falling obstacles for as long as you can. Previously known as DodgeCube.
 
 ## Screenshots
 
