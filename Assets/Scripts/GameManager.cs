@@ -3,11 +3,17 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public float moveLimitLeft, moveLimitRight, playerPadding = 0.5f;
+    
+    public PlayerController _playerController;
+    
     public bool isGameActive = false;
     public GameObject _mainMenuPanel;
     
     public GameObject droppyPrefab;
-    private bool isObstacleSpawned = false;
+    public bool isObstacleSpawned = false;
+    public float xPostion;
+    
     
     public GameObject boppyPrefab;
     public bool isPlayerSpawned = false;
@@ -23,7 +29,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        moveLimitLeft = Camera.main.ViewportToWorldPoint(new Vector3(0,0,0)).x + playerPadding;
+        moveLimitRight = Camera.main.ViewportToWorldPoint(new Vector3(1,0,0)).x - playerPadding;
     }
 
     public void GameStart()
@@ -49,7 +56,8 @@ public class GameManager : MonoBehaviour
             
             if (!isObstacleSpawned)
             {
-                Instantiate(droppyPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                xPostion = Random.Range(moveLimitLeft, moveLimitRight);
+                Instantiate(droppyPrefab, new Vector3(xPostion, 0, 0), Quaternion.identity);
                 isObstacleSpawned = true;
             }
         }
