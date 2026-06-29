@@ -13,21 +13,24 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        float move = 0f;
-        if (Keyboard.current.aKey.isPressed)
+        if (_gameManager.isGameActive)
         {
-            move = -7.5f;
-        }
-        else if (Keyboard.current.dKey.isPressed) 
-        {
-            move = 7.5f;
-        }
-            
-        //translate will help direction of acceleration (Move i.e. left, right, up, down)
-        transform.Translate(move * moveSpeed * Time.deltaTime, 0, 0);
+            float move = 0f;
+            if (Keyboard.current.aKey.isPressed)
+            {
+                move = -7.5f;
+            }
+            else if (Keyboard.current.dKey.isPressed)
+            {
+                move = 7.5f;
+            }
 
-        Vector3 pos = transform.position; 
-        pos.x = Mathf.Clamp(pos.x, _gameManager.moveLimitLeft, _gameManager.moveLimitRight);
-        transform.position = pos;
+            //translate will help direction of acceleration (Move i.e. left, right, up, down)
+            transform.Translate(move * moveSpeed * Time.deltaTime, 0, 0);
+
+            Vector3 pos = transform.position;
+            pos.x = Mathf.Clamp(pos.x, _gameManager.moveLimitLeft, _gameManager.moveLimitRight);
+            transform.position = pos;
+        }
     }
 }
