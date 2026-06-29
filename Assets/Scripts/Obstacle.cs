@@ -25,8 +25,8 @@ public class Obstacle : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
             _gameManager.isObstacleSpawned = false;
-            //_gameManager.score += 1;
-            //_gameManager.updateScore();
+            _gameManager.score += 1;
+            _gameManager.updateScore();
             Destroy(gameObject);
         }
 
@@ -34,6 +34,8 @@ public class Obstacle : MonoBehaviour
         {
             _gameManager.isObstacleSpawned = false;
             Destroy(gameObject);
+            _gameManager.isGameActive = false;
+            _gameManager.isGameOver = true;
         }
     }
 }
